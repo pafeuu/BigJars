@@ -1,29 +1,30 @@
 package net.pafeuu.bigJarsMod.registries;
 
-
-import com.hollingsworth.arsnouveau.common.util.RegistryWrapper;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.pafeuu.DruidicQuestMod.DruidicQuestMod;
-import net.pafeuu.DruidicQuestMod.blockClasses.BigSourceJar;
-import net.pafeuu.DruidicQuestMod.blockClasses.BigSourceJarTile;
-import net.pafeuu.DruidicQuestMod.blockClasses.HugeSourceJar;
-import net.pafeuu.DruidicQuestMod.blockClasses.HugeSourceJarTile;
-//import net.pafeuu.DruidicQuestMod.block.customLogBlock;
+import net.pafeuu.bigJarsMod.BigJarsMod;
 
-import java.util.function.Supplier;
-
-import static com.hollingsworth.arsnouveau.setup.registry.BlockRegistry.registerBlockAndItem;
-import static com.hollingsworth.arsnouveau.setup.registry.BlockRegistry.registerTile;
 
 public class CreativeTabRegistry {
+
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, BigJarsMod.MODID);
+
+    public static final RegistryObject<CreativeModeTab> BIG_JARS_TAB = CREATIVE_MODE_TAB.register("big_jars_tab",
+            ()-> CreativeModeTab.builder().icon(()-> new ItemStack(BlockRegistry.HUGE_SOURCE_JAR.get()))
+                    .title(Component.translatable("creativetab.big_jars"))
+                    .displayItems((pParameters,pOutput)->{
+                        pOutput.accept(BlockRegistry.BIG_SOURCE_JAR.get());
+                        pOutput.accept(BlockRegistry.HUGE_SOURCE_JAR.get());
+                    })
+                    .build());
+    public static void register(IEventBus eventBus) {
+        CREATIVE_MODE_TAB.register(eventBus);
+    }
+
 }

@@ -7,6 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.pafeuu.bigJarsMod.registries.ItemRegistry;
 import org.slf4j.Logger;
 
 import static com.mojang.logging.LogUtils.getLogger;
@@ -15,7 +16,7 @@ import static com.mojang.logging.LogUtils.getLogger;
 @Mod(BigJarsMod.MODID)
 public class BigJarsMod
 {
-    public static final String MODID = "druidic_quest_core";
+    public static final String MODID = "big_jars";
     public static final Logger DQ_LOGGER = getLogger();
 
     public BigJarsMod(FMLJavaModLoadingContext context) {
@@ -23,11 +24,10 @@ public class BigJarsMod
 
         CreativeTabRegistry.register(modEventBus);
         BlockRegistry.register(modEventBus);
-
+        ItemRegistry.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        modEventBus.addListener(CreativeTabRegistry::addCreative);
 
         context.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC,  BigJarsMod.MODID + "/common_config.toml");
     }

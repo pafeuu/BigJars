@@ -3,6 +3,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -112,42 +113,22 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    // flatDir {
-    //     dir 'libs'
-    // }
+    maven {
+        url "https://cursemaven.com"
+    }
+    maven { url = "https://maven.theillusivec4.top" }
+    mavenCentral()
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    //if you ever want to speedrun load time, just switch implementation to compileOnly for mods you dont want to load
-    implementation fg.deobf("curse.maven:geckolib-388172:8285794")
-    implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
-    implementation fg.deobf("curse.maven:cofh-core-69162:5374122")
-    implementation fg.deobf("curse.maven:botania-225643:8702079")
-    implementation fg.deobf("curse.maven:patchouli-306770:6164575")
-    implementation fg.deobf("curse.maven:emi-580555:8081375")
-    runtimeOnly fg.deobf("curse.maven:tmrv-1194921:8336855")
-    runtimeOnly fg.deobf("curse.maven:jade-324717:8479276")
-    implementation fg.deobf("curse.maven:zeta-968868:7335229")
-    implementation fg.deobf("curse.maven:quark-243121:6427817")
     implementation fg.deobf("curse.maven:ars-nouveau-401955:6688854")
-
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.4")) //this may be stupid, but it works for me
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:[0.5.4,)"))
+    implementation fg.deobf("curse.maven:curios-309927:6418456")
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -201,14 +182,8 @@ publishing {
     }
     repositories {
         maven {
-            url "https://cursemaven.com"
+            url "file://${project.projectDir}/mcmodsrepo"
         }
-        maven {
-            url 'https://maven.blamejared.com'
-        }
-
-        maven { url = "https://maven.theillusivec4.top" }
-        mavenCentral()
     }
 }
 
