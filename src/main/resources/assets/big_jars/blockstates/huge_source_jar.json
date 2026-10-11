@@ -1,0 +1,16 @@
+{
+	"variants": {
+    "fill=0": { "model": "big_jars:block/source_jars/huge_source_jar0" },
+	"fill=1": { "model": "big_jars:block/source_jars/huge_source_jar_sliver" },
+	"fill=2": { "model": "big_jars:block/source_jars/huge_source_jar10" },
+	"fill=3": { "model": "big_jars:block/source_jars/huge_source_jar20" },
+	"fill=4": { "model": "big_jars:block/source_jars/huge_source_jar30" },
+	"fill=5": { "model": "big_jars:block/source_jars/huge_source_jar40" },
+	"fill=6": { "model": "big_jars:block/source_jars/huge_source_jar50" },
+	"fill=7": { "model": "big_jars:block/source_jars/huge_source_jar60" },
+	"fill=8": { "model": "big_jars:block/source_jars/huge_source_jar70" },
+	"fill=9": { "model": "big_jars:block/source_jars/huge_source_jar80" },
+	"fill=10": { "model": "big_jars:block/source_jars/huge_source_jar90" },
+	"fill=11": { "model": "big_jars:block/source_jars/huge_source_jar100" }
+  }
+}
