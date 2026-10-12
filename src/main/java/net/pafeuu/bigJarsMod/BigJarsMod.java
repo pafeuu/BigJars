@@ -1,5 +1,11 @@
 package net.pafeuu.bigJarsMod;
 
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.pafeuu.bigJarsMod.registries.BlockRegistry;
 import net.pafeuu.bigJarsMod.registries.CreativeTabRegistry;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,4 +37,5 @@ public class BigJarsMod
 
         context.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC,  BigJarsMod.MODID + "/common_config.toml");
     }
+
 }
